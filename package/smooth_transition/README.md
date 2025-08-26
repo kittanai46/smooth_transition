@@ -1,39 +1,127 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+## smooth_transition
+A simple and customizable Flutter package for smooth page transition animations.
+Supports fade, slide, and scale effects with minimal setup.
 
 ## Features
+🚀 Easy to use with Navigator.push()
+🎬 Built-in animations: Fade, Slide, Scale
+⚡ Lightweight & customizable
+🔧 Adjustable animation duration & curve
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+## Installation
+Add dependency in your pubspec.yaml:
 
 ```dart
-const like = 'sample';
+flutter:
+    sdk: flutter
+dependencies:
+  smooth_transition: ^1.0.0
+```
+```dart
+Then run:
+flutter pub get
 ```
 
-## Additional information
+## 🚀 Usage
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+```dart
+import 'package:smooth_transition/smooth_transition.dart';
+```
+
+## Example
+
+```dart
+Navigator.push(
+  context,
+  EasyPageTransition(
+    page: const SecondPage(),
+    type: PageTransitionType.slide,
+    duration: const Duration(milliseconds: 400),
+  ),
+);
+```
+
+## Transition Types
+A Flutter package for easy page transition animations.  
+Supports multiple transition types:  
+- fade  
+- scale  
+- rotate  
+- slideLeft  
+- slideRight  
+- slideUp  
+- slideDown
+
+## 🛠️ Example App 
+```dart
+import 'package:flutter/material.dart';
+import 'package:smooth_transition/smooth_transition.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: const FirstPage(),
+    );
+  }
+}
+
+class FirstPage extends StatelessWidget {
+  const FirstPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text("First Page")),
+      body: Center(
+        child: ElevatedButton(
+          child: const Text("Go to Second Page"),
+          onPressed: () {
+            Navigator.push(
+              context,
+              EasyPageTransition(
+                page: const SecondPage(),
+                type: PageTransitionType.fade,
+                duration: const Duration(milliseconds: 500),
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class SecondPage extends StatelessWidget {
+  const SecondPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text("Second Page")),
+      body: const Center(
+        child: Text("Hello from the second page!"),
+      ),
+    );
+  }
+}
+```
+
+## 📌 Roadmap
+ Add more transition types (flip, rotate, etc.)
+ Support for page pop transitions
+ Advanced customization options
+
+## 🤝 Contributing
+Contributions are welcome!
+Please open an issue or submit a pull request.
+
+## 📄 License
+This project is licensed under the MIT License.
+

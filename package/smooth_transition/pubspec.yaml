@@ -1,7 +1,9 @@
 name: smooth_transition
-description: "A new Flutter package project."
-version: 0.0.1
-homepage:
+description: "A simple and customizable Flutter package for smooth page transition animations,
+  including fade, slide, and scale effects. Easy to use with Navigator.push()."
+version: 1.0.1
+homepage: https://github.com/kittanai46/smooth_transition
+repository: https://github.com/kittanai46/smooth_transition
 
 environment:
   sdk: '>=3.2.6 <4.0.0'

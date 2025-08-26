@@ -1,3 +1,6 @@
-## 0.0.1
+## 1.0.0
+- Initial release.
+- Supported transitions: fade, scale, rotate, slideLeft, slideRight, slideUp, slideDown.
 
-* TODO: Describe initial release.
+## 1.0.1
+- Fix Readme code
