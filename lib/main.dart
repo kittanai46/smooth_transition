@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_transition/smooth_transition.dart';
 
-
 void main() {
   runApp(const MyApp());
 }

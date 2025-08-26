@@ -1,12 +1,12 @@
 ## smooth_transition
-A simple and customizable Flutter package for smooth page transition animations.
-Supports fade, slide, and scale effects with minimal setup.
+A simple and customizable Flutter package for smooth page transition animations.Supports fade, slide,
+and scale effects with minimal setup.
 
 ## Features
-🚀 Easy to use with Navigator.push()
-🎬 Built-in animations: Fade, Slide, Scale
-⚡ Lightweight & customizable
-🔧 Adjustable animation duration & curve
+- 🚀 Easy to use with Navigator.push()
+- 🎬 Built-in animations: Fade, Slide, Scale
+- ⚡ Lightweight & customizable
+- 🔧 Adjustable animation duration & curve
 
 ## Installation
 Add dependency in your pubspec.yaml:
@@ -15,7 +15,7 @@ Add dependency in your pubspec.yaml:
 flutter:
     sdk: flutter
 dependencies:
-  smooth_transition: ^1.0.0
+  smooth_transition: ^1.0.3
 ```
 ```dart
 Then run:
@@ -112,11 +112,11 @@ class SecondPage extends StatelessWidget {
   }
 }
 ```
-
+ 
 ## 📌 Roadmap
- Add more transition types (flip, rotate, etc.)
- Support for page pop transitions
- Advanced customization options
+Add more transition types (flip, rotate, etc.)
+Support for page pop transitions
+Advanced customization options
 
 ## 🤝 Contributing
 Contributions are welcome!

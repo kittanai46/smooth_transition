@@ -1,0 +1,21 @@
+name: smooth_transition_example
+description: Example project for smooth_transition package
+publish_to: "none"
+
+environment:
+  sdk: ">=2.17.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+
+  smooth_transition:
+    path: ../
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
