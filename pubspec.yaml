@@ -1,13 +1,14 @@
-name: smooth_transition
-description: "A simple and customizable Flutter package for smooth page transition animations,
+name: smooth_transition_app
+description:
+  "A simple and customizable Flutter package for smooth page transition animations,
   including fade, slide, and scale effects. Easy to use with Navigator.push()."
 
-publish_to: 'none' 
+publish_to: "none"
 
 version: 1.0.3
 
 environment:
-  sdk: '>=3.2.6 <4.0.0'
+  sdk: ">=3.2.6 <4.0.0"
 
 dependencies:
   flutter:
@@ -23,4 +24,3 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-
