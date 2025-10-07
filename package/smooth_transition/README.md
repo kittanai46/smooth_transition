@@ -15,7 +15,7 @@ Add dependency in your pubspec.yaml:
 flutter:
     sdk: flutter
 dependencies:
-  smooth_transition: ^1.0.6
+  smooth_transition: ^1.0.7
 ```
 ```dart
 Then run:
@@ -44,31 +44,30 @@ Navigator.push(
 ```
 
 ## 🎨 Transition Types
-
 A Flutter package for easy page transition animations.
 Supports multiple transition types:
 
-fade – Fades the page in/out.
-scale – Scales the page in/out.
-rotate – Rotates the page during transition.
-slideLeft – Slides the page from right to left.
-slideRight – Slides the page from left to right.
-slideUp – Slides the page from bottom to top.
-slideDown – Slides the page from top to bottom.
+- fade – Fades the page in/out.
+- scale – Scales the page in/out.
+- rotate – Rotates the page during transition.
+- slideLeft – Slides the page from right to left.
+- slideRight – Slides the page from left to right.
+- slideUp – Slides the page from bottom to top.
+- slideDown – Slides the page from top to bottom.
 
-## ✨ New Transitions (v1.0.4)
-scaleFade – Combines scaling and fading for a pop-in effect.
-rotateScale – Rotates and scales the page simultaneously.
-slideLeftFade – Slides the page from right to left with fade.
-elasticScale – Bouncy scale animation with spring effect.
-flip – 3D card flip animation for page transitions.
+✨ New Transitions (v1.0.4)
+- scaleFade – Combines scaling and fading for a pop-in effect.
+- rotateScale – Rotates and scales the page simultaneously.
+- slideLeftFade – Slides the page from right to left with fade.
+- elasticScale – Bouncy scale animation with spring effect.
+- flip – 3D card flip animation for page transitions.
 
-## 🆕 Added in v1.0.6
-zoomRotate – Rotates while zooming in/out (smooth cinematic effect).
-blurFade – Fades in with a blurred background for a modern look.
-slideZoom – Slides in while zooming (great for card/detail transitions).
-fadeThrough – Material 3 style fade-through transition.
-curve parameter – Customize the animation curve for any transition.
+🆕 Added in v1.0.6
+- zoomRotate – Rotates while zooming in/out (smooth cinematic effect).
+- blurFade – Fades in with a blurred background for a modern look.
+- slideZoom – Slides in while zooming (great for card/detail transitions).
+- fadeThrough – Material 3 style fade-through transition.
+- curve parameter – Customize the animation curve for any transition.
 
 ## 🛠️ Full Example App
 ```dart

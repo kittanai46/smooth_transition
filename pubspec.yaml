@@ -3,7 +3,7 @@ description:
   "A simple and customizable Flutter package for smooth page transition animations,
   including fade, slide, and scale effects. Easy to use with Navigator.push()."
 
-version: 1.0.6
+version: 1.0.7
 
 environment:
   sdk: ">=3.2.6 <4.0.0"
@@ -11,8 +11,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  smooth_transition:
-    path:
+smooth_transition:
+  path: ./package/smooth_transition
+
   cupertino_icons: ^1.0.2
 
 dev_dependencies:

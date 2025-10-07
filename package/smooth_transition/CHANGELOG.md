@@ -46,4 +46,5 @@
 - Optimized performance and visual consistency across all transitions
 - Example usage for new transitions
 
-
+## 1.0.7
+- Fix README.md
