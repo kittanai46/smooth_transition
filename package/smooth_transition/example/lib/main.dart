@@ -10,60 +10,101 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Smooth Transition Example',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: const FirstPage(),
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Smooth Transition Demo',
+      home: FirstPage(),
     );
   }
 }
 
-class FirstPage extends StatelessWidget {
+class FirstPage extends StatefulWidget {
   const FirstPage({super.key});
+
+  @override
+  State<FirstPage> createState() => _FirstPageState();
+}
+
+class _FirstPageState extends State<FirstPage> {
+  PageTransitionType _selectedType = PageTransitionType.fade;
+  final _transitionList = PageTransitionType.values;
+  final TextEditingController _durationController =
+      TextEditingController(text: '450');
+
+  void _goToSecondPage() {
+    final durationMs = int.tryParse(_durationController.text) ?? 450;
+
+    Navigator.push(
+      context,
+      PageTransition(
+        child: const SecondPage(),
+        type: _selectedType,
+        duration: Duration(milliseconds: durationMs),
+        curve: Curves.easeInOut,
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("First Page")),
-      body: Center(
+      appBar: AppBar(
+        title: const Text('Smooth Transition Demo'),
+        centerTitle: true,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  PageTransition(
-                    child: const SecondPage(),
-                    type: PageTransitionType.fade,
-                  ),
-                );
-              },
-              child: const Text("Fade Transition"),
+            const Text(
+              "Select Transition Type",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  PageTransition(
-                    child: const SecondPage(),
-                    type: PageTransitionType.scale,
-                  ),
-                );
+            const SizedBox(height: 12),
+
+            // Dropdown for choosing transition type
+            DropdownButton<PageTransitionType>(
+              value: _selectedType,
+              isExpanded: true,
+              onChanged: (value) {
+                if (value != null) {
+                  setState(() => _selectedType = value);
+                }
               },
-              child: const Text("Scale Transition"),
+              items: _transitionList.map((type) {
+                return DropdownMenuItem<PageTransitionType>(
+                  value: type,
+                  child: Text(type.toString().split('.').last),
+                );
+              }).toList(),
             ),
+
+            const SizedBox(height: 16),
+
+            // Duration input
+            TextField(
+              controller: _durationController,
+              keyboardType: TextInputType.number,
+              decoration: const InputDecoration(
+                labelText: 'Duration (milliseconds)',
+                border: OutlineInputBorder(),
+              ),
+            ),
+
+            const SizedBox(height: 24),
+
+            // Button to go to second page
             ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  PageTransition(
-                    child: const SecondPage(),
-                    type: PageTransitionType.slideLeft,
-                  ),
-                );
-              },
-              child: const Text("Slide Left Transition"),
+              onPressed: _goToSecondPage,
+              style: ElevatedButton.styleFrom(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 40, vertical: 14),
+              ),
+              child: const Text(
+                "Go to Second Page",
+                style: TextStyle(fontSize: 16),
+              ),
             ),
           ],
         ),
@@ -78,13 +119,23 @@ class SecondPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Second Page")),
+      appBar: AppBar(
+        title: const Text("Second Page"),
+      ),
       body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: const Text("Go Back"),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              "Hello from the Second Page 👋",
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text("Back"),
+            ),
+          ],
         ),
       ),
     );

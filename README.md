@@ -15,7 +15,7 @@ Add dependency in your pubspec.yaml:
 flutter:
     sdk: flutter
 dependencies:
-  smooth_transition: ^1.0.3
+  smooth_transition: ^1.0.6
 ```
 ```dart
 Then run:
@@ -33,65 +33,107 @@ import 'package:smooth_transition/smooth_transition.dart';
 ```dart
 Navigator.push(
   context,
-  EasyPageTransition(
-    page: const SecondPage(),
-    type: PageTransitionType.slide,
-    duration: const Duration(milliseconds: 400),
+  PageTransition(
+    child: const SecondPage(),
+    type: PageTransitionType.scaleFade,
+    duration: const Duration(milliseconds: 500),
+    curve: Curves.easeOutBack,
   ),
 );
+
 ```
 
-## Transition Types
-A Flutter package for easy page transition animations.  
-Supports multiple transition types:  
-- fade  
-- scale  
-- rotate  
-- slideLeft  
-- slideRight  
-- slideUp  
-- slideDown
+## 🎨 Transition Types
+A Flutter package for easy page transition animations.
+Supports multiple transition types:
 
-## 🛠️ Example App 
+fade – Fades the page in/out.
+scale – Scales the page in/out.
+rotate – Rotates the page during transition.
+slideLeft – Slides the page from right to left.
+slideRight – Slides the page from left to right.
+slideUp – Slides the page from bottom to top.
+slideDown – Slides the page from top to bottom.
+
+## ✨ New Transitions (v1.0.4)
+scaleFade – Combines scaling and fading for a pop-in effect.
+rotateScale – Rotates and scales the page simultaneously.
+slideLeftFade – Slides the page from right to left with fade.
+elasticScale – Bouncy scale animation with spring effect.
+flip – 3D card flip animation for page transitions.
+
+## 🆕 Added in v1.0.6
+zoomRotate – Rotates while zooming in/out (smooth cinematic effect).
+blurFade – Fades in with a blurred background for a modern look.
+slideZoom – Slides in while zooming (great for card/detail transitions).
+fadeThrough – Material 3 style fade-through transition.
+curve parameter – Customize the animation curve for any transition.
+
+## 🛠️ Full Example App
 ```dart
 import 'package:flutter/material.dart';
 import 'package:smooth_transition/smooth_transition.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: const FirstPage(),
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: FirstPage(),
     );
   }
 }
 
-class FirstPage extends StatelessWidget {
+class FirstPage extends StatefulWidget {
   const FirstPage({super.key});
+  @override
+  State<FirstPage> createState() => _FirstPageState();
+}
+
+class _FirstPageState extends State<FirstPage> {
+  PageTransitionType _selectedType = PageTransitionType.fade;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("First Page")),
-      body: Center(
-        child: ElevatedButton(
-          child: const Text("Go to Second Page"),
-          onPressed: () {
-            Navigator.push(
-              context,
-              EasyPageTransition(
-                page: const SecondPage(),
-                type: PageTransitionType.fade,
-                duration: const Duration(milliseconds: 500),
-              ),
-            );
-          },
+      appBar: AppBar(title: const Text("Smooth Transition Demo")),
+      body: Padding(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text("Select Transition Type:"),
+            const SizedBox(height: 8),
+            DropdownButton<PageTransitionType>(
+              value: _selectedType,
+              isExpanded: true,
+              onChanged: (v) => setState(() => _selectedType = v!),
+              items: PageTransitionType.values.map((e) {
+                return DropdownMenuItem(
+                  value: e,
+                  child: Text(e.toString().split('.').last),
+                );
+              }).toList(),
+            ),
+            const SizedBox(height: 24),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  PageTransition(
+                    child: const SecondPage(),
+                    type: _selectedType,
+                    duration: const Duration(milliseconds: 450),
+                  ),
+                );
+              },
+              child: const Text("Go to Second Page"),
+            ),
+          ],
         ),
       ),
     );
@@ -106,17 +148,18 @@ class SecondPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text("Second Page")),
       body: const Center(
-        child: Text("Hello from the second page!"),
+        child: Text("Hello from the second page 👋", style: TextStyle(fontSize: 22)),
       ),
     );
   }
 }
+
 ```
 
 ## 📌 Roadmap
-Add more transition types (flip, rotate, etc.)
-Support for page pop transitions
-Advanced customization options
+Add reverse transitions for Navigator.pop()
+Add shared-axis and container transform styles
+Provide animation preview widgets for playground demos
 
 ## 🤝 Contributing
 Contributions are welcome!

@@ -126,7 +126,7 @@ packages:
       path: "package/smooth_transition"
       relative: true
     source: path
-    version: "0.0.1"
+    version: "1.0.5"
   source_span:
     dependency: transitive
     description:
